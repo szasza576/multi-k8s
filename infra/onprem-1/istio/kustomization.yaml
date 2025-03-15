@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
   - istio-namespace.yaml
   - certs
-#  - ../../common/istio/istio-base-release.yaml
-#  - ../../common/istio/istio-d-release.yaml
-#patchesStrategicMerge:
-#  - istio-d-values.yaml
+  - ../../common/istio/istio-base-release.yaml
+  - ../../common/istio/istio-d-release.yaml
+patchesStrategicMerge:
+  - istio-d-values.yaml
