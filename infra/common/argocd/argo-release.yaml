@@ -4,7 +4,7 @@ metadata:
   name: argo-cd
   namespace: cluster-config
 spec:
-  targetNamespace: istio-system
+  targetNamespace: argo-cd
   releaseName: argo-cd
   chart:
     spec:
