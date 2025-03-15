@@ -1,8 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ../../common/argo/argo-repo.yaml
-  - ../../common/argo/argo-namespace.yaml
-  - ../../common/argo/argo-release.yaml
+  - ../../common/argo-cd/argo-repo.yaml
+  - ../../common/argo-cd/argo-namespace.yaml
+  - ../../common/argo-cd/argo-release.yaml
 patchesStrategicMerge:
   - argo-values.yaml
