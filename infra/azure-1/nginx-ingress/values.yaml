@@ -1,0 +1,54 @@
+controller:
+  service:
+    annotations:
+      service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+      service.beta.kubernetes.io/azure-load-balancer-ipv4: "ADDTHEIPHERE"
+  nodeSelector:
+    beta.kubernetes.io/os: "linux"
+  image:
+    repository: coeeucommonsacr.azurecr.io/ingress/controller
+    digest: ""
+  affinity:
+    nodeAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - preference:
+          matchExpressions:
+          - key: kubernetes.azure.com/mode
+            operator: In
+            values:
+            - system
+        weight: 100
+  tolerations:
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/master
+    - key: CriticalAddonsOnly
+      operator: Exists
+  admissionWebhooks:
+    patch:
+      image:
+        repository: coeeucommonsacr.azurecr.io/ingress/kube-webhook-certgen
+      tolerations:
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/master
+        - key: CriticalAddonsOnly
+          operator: Exists
+defaultBackend:
+  nodeSelector:
+    beta.kubernetes.io/os: "linux"
+  image:
+    repository: coeeucommonsacr.azurecr.io/ingress/defaultbackend-amd64
+  affinity:
+    nodeAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - preference:
+          matchExpressions:
+          - key: kubernetes.azure.com/mode
+            operator: In
+            values:
+            - system
+        weight: 100
+  tolerations:
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/master
+    - key: CriticalAddonsOnly
+      operator: Exists
