@@ -8,3 +8,5 @@ secretGenerator:
       - ca-key.pem
       - root-cert.pem
       - cert-chain.pem
+generatorOptions:
+  disableNameSuffixHash: true
