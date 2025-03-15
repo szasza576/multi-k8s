@@ -1,0 +1,9 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: argo-cd
+  namespace: cluster-config
+spec:
+  values:
+    global:
+      domain: argo-onprem2.azuredemo.eu
