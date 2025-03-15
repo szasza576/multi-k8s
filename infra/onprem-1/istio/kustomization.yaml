@@ -5,5 +5,9 @@ resources:
   - certs
   - ../../common/istio/istio-base-release.yaml
   - ../../common/istio/istio-d-release.yaml
+  - ../../common/istio/istio-ew-gateway-release.yaml
+  - ../../common/istio/istio-expose-services.yaml
+  - ../../common/istio/istio-access-token.yaml
 patchesStrategicMerge:
   - istio-d-values.yaml
+  - istio-gateway-values.yaml
