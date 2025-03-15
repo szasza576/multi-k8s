@@ -2,4 +2,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - istio-namespace.yaml
-  - istio-certs.yaml
+  - certs
+  - ../../common/istio/istio-base-release.yaml
+  - ../../common/istio/istio-d-release.yaml
+patchesStrategicMerge:
+  - istio-d-values.yaml

@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - nginx/nginx-repo.yaml
   - nginx/nginx-namespace.yaml
+  - istio/istio-repo.yaml
