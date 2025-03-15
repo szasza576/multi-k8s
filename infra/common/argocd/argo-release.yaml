@@ -1,0 +1,29 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: argo-cd
+  namespace: cluster-config
+spec:
+  targetNamespace: istio-system
+  releaseName: argo-cd
+  chart:
+    spec:
+      chart: argo-cd
+      sourceRef:
+        kind: HelmRepository
+        name: argo
+        namespace: cluster-config
+      #version: "1.25.0"
+  interval: 1h0m0s
+  install:
+    remediation:
+      retries: 3
+  values:
+    server:
+      ingress:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+          nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+        tls: false
